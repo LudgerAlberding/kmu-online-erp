@@ -207,7 +207,7 @@ class WlwCrmImportWizard(models.TransientModel):
             return Lead.search([("partner_name", "ilike", v["company"]), ("zip", "=", v["zip"])], limit=1)
         return Lead.browse()
 
-    def _description(self, v):
+    def _lead_description(self, v):
         lines = ["WLW Besucher"]
         if v["industry"]: lines.append("Branche: %s" % v["industry"])
         if v["employee_count"]: lines.append("Mitarbeiterzahl: %s" % v["employee_count"])
