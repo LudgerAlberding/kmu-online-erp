@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wlw_crm_import_wizard_view_form" model="ir.ui.view">
+        <field name="name">kmu.wlw.crm.import.wizard.form</field>
+        <field name="model">kmu.wlw.crm.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="WLW Besucher importieren">
+                <group>
+                    <field name="file" filename="filename"/>
+                    <field name="filename" invisible="1"/>
+                </group>
+                <group>
+                    <field name="dry_run"/>
+                    <field name="create_leads"/>
+                    <field name="update_existing"/>
+                    <field name="assign_to_me"/>
+                </group>
+                <group>
+                    <field name="result_text" nolabel="1" readonly="1"/>
+                </group>
+                <footer>
+                    <button name="action_import" type="object" string="Import starten" class="btn-primary"/>
+                    <button string="Schließen" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_wlw_crm_import_wizard" model="ir.actions.act_window">
+        <field name="name">WLW Besucher importieren</field>
+        <field name="res_model">kmu.wlw.crm.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="menu_wlw_crm_import" name="WLW Besucher importieren" parent="crm.crm_menu_config" action="action_wlw_crm_import_wizard" sequence="90"/>
+</odoo>
