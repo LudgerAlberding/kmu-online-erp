@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_lead_view_form_wlw" model="ir.ui.view">
+        <field name="name">crm.lead.form.wlw</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="WLW">
+                    <group>
+                        <group string="WLW Kennzahlen">
+                            <field name="x_wlw_import_key"/>
+                            <field name="x_wlw_first_visit"/>
+                            <field name="x_wlw_last_visit"/>
+                            <field name="x_wlw_visit_count"/>
+                            <field name="x_wlw_activity_level"/>
+                        </group>
+                        <group string="WLW Unternehmensdaten">
+                            <field name="x_wlw_linkedin"/>
+                            <field name="x_wlw_industry"/>
+                            <field name="x_wlw_employee_count"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="x_wlw_products"/>
+                        <field name="x_wlw_keywords"/>
+                        <field name="x_wlw_visit_history"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
