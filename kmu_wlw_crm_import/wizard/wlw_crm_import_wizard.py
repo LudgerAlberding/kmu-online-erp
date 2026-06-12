@@ -40,10 +40,23 @@ class WlwCrmImportWizard(models.TransientModel):
                     continue
                 lead = self._find_lead(v)
                 signature = self._signature(v)
+                
                 if lead:
                     if not self.update_existing:
                         skipped += 1
                         continue
+                
+                    if (
+                        lead.x_wlw_last_visit
+                        and v["date"]
+                        and v["date"] <= lead.x_wlw_last_visit
+                    ):
+                        skipped += 1
+                        notes.append(
+                            "Zeile %s: übersprungen, Besuchsdatum nicht neuer als vorhandener letzter Besuch" % line_no
+                        )
+                        continue
+                
                     if not self.dry_run:
                         vals = self._update_vals(lead, v, signature)
                         if vals:
